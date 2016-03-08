@@ -1,0 +1,56 @@
+<style>
+  #card {
+    position:relative;
+    width: 75%;
+    margin:20px auto;
+    box-shadow: 1px 1px 1px 1px #666;
+    border-radius:2px;
+    padding:40px 20px 20px;
+    text-align:center;
+  }
+
+  .side {
+  }
+
+  #card .fa-arrow-left,
+  #card .fa-arrow-right,
+  #card .fa-thumbs-up,
+  #card .fa-thumbs-down {
+    top:10px;
+    position:absolute;
+    cursor:pointer;
+  }
+
+  #card .fa-arrow-left {
+left:10px;
+  }
+
+  #card .fa-arrow-right {
+    right:10px;
+  }
+
+  #card .fa-thumbs-down {
+    left:40%;
+  }
+
+  #card .fa-thumbs-up {
+    right:40%;
+  }
+</style>
+
+<pre>factSearch = {{factSearch | json}}</pre>
+
+<div id="card" ng-click="toggleSide(side)">
+  <span ng-click="prevCard($event)" class="fa fa-arrow-left"></span>
+  <span ng-click="nextCard($event)" class="fa fa-arrow-right"></span>
+  <div class="side" ng-show="side==1">{{card.side1}}</div>
+  <div class="side" ng-show="side==2">
+    {{card.side2}}
+    <span ng-click="thumbUp($event, card)" class="fa fa-thumbs-up fa-lg"></span>
+    <span ng-click="thumbDown($event, card)" class="fa fa-thumbs-down fa-lg"></span>
+  </div>
+</div>
+
+
+<pre>card = {{card | json}}</pre>
+<pre>side = {{side | json}}</pre>

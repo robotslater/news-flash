@@ -1,0 +1,98 @@
+<h1>
+  Fact Commons
+</h1>
+<p>
+  This is where the community hosted facts are located. You can search by news storys, sets, languages...any tag.
+</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <form class="searchForm" novalidate>
+      <!-- <div class="form-group">
+    <label for="searchId">Id:</label>
+    <input ng-model="factSearch.id" type="text" name="searchId" class="form-control"/>
+  </div> -->
+
+      <div class="form-group form-inline">
+        <label>Saved Search:</label>
+
+        <select class="form-control" ng-change="updateFactSearch()" ng-model="savedSearch" ng-options="savedSearches as savedSearches.name for savedSearches in savedSearches"></select>
+
+        <!-- <select class="form-control" ng-model="savedSearch" ng-change="updateFactSearch(savedSearch)">
+          <option ng-repeat="option in savedSearches" value="{{option}}">{{option.name}}</option>
+        </select> -->
+      </div>
+
+      <pre>savedSearch = {{savedSearch | json}}</pre>
+
+      <div class="form-group form-inline">
+        <label for="searchOpperator">Opperator:</label>
+        <select class="form-control" name="searchOpperator" ng-model="factSearch.opperator">
+          <option value="and">And</option>
+          <option value="or">Or</option>
+        </select>
+      </div>
+
+      <div class="form-group form-inline">
+        <label for="searchNewTag">Tags:</label>
+        <input class="form-control" name="searchNewTag" ng-model="newTag" type="text"/>
+        <button class="btn btn-primary btn-xs" ng-click="addSearchTag(newTag)">Add</button>
+        <!-- ng-init="factSearch.tags = []" -->
+        <ul ng-show="(factSearch.tags.length > 0)">
+          <li ng-repeat="tag in factSearch.tags track by $index">{{tag}}
+            <button class="btn btn-xs btn-default" ng-click="removeSearchTag($index)">remove</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" ng-click="search()">Search</button>
+        <button class="btn btn-primary" ng-click="reset()">Reset</button>
+        <!-- <button class="btn btn-primary" ng-click="saveSearch()">Save Search</button> -->
+        <button class="btn btn-primary" ng-click="saveSearchAs()">Save Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>Side 1</th>
+    <th>Side 2</th>
+    <th>Tags</th>
+    <th>User</th>
+    <th></th>
+  </tr>
+  <tr ng-repeat="fact in facts">
+    <td>{{fact.side1}}</td>
+    <td>{{fact.side2}}</td>
+    <td>{{fact.tags.join()}}</td>
+    <td>{{fact.user}}</td>
+    <td>
+      <button class="btn btn-primary" ng-click="view(fact.id)">View Detail</button>
+      <button class="btn btn-primary" ng-click="fork(fact)">Fork Fact</button>
+      <button class="btn btn-danger" ng-click="delete(fact.id)">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<div class="modal-container" ng-show="modalFork.show">
+  <div class="modal-window marginfix">
+    <h3>Fact Successfully Forked</h3>
+    <button class="btn btn-primary" ng-click="modalFork.show = false">Stay Here</button>
+    <button class="btn btn-primary" ng-click="editMyFact(modalFork.myId)">Edit Forked Fact</button>
+    <button class="btn btn-primary" ng-click="viewMyFacts()">View My Facts</button>
+  </div>
+</div>
+
+<div class="modal-container" ng-show="modalSavedSearch.show">
+  <div class="modal-window marginfix">
+    <h3>Save Search As</h3>
+    <div class="form-group form-inline">
+      <label>Search Name:</label>
+      <input class="form-control" ng-model="factSearch.name" type="text">
+    </div>
+    <button class="btn btn-primary" ng-click="modalSavedSearch.show = false">Cancel</button>
+    <button class="btn btn-primary" ng-click="saveSearch(factSearch)">Save</button>
+  </div>
+</div>

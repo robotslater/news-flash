@@ -1,0 +1,72 @@
+<h1>
+  My Facts
+</h1>
+<p>
+  This is where the user will manage his/her facts to be studied
+</p>
+<p>
+  <button class="btn btn-primary" ng-click="new()">New My Fact</button>
+</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+
+<pre>factSearch = {{factSearch | json}}</pre>
+
+
+
+<form class="searchForm" novalidate>
+  <!-- <div class="form-group">
+    <label for="searchId">Id:</label>
+    <input ng-model="factSearch.id" type="text" name="searchId" class="form-control"/>
+  </div> -->
+  <div class="form-group form-inline">
+    <label for="searchOpperator">Opperator:</label>
+    <select ng-model="factSearch.opperator" type="text" name="searchOpperator" class="form-control">
+      <option value="and">And</option>
+      <option value="or">Or</option>
+    </select>
+  </div>
+  <div class="form-group form-inline">
+    <label for="searchNewTag">Tags:</label>
+    <input ng-model="newTag" type="text" name="searchNewTag" class="form-control" />
+    <button class="btn btn-primary btn-xs" ng-click="addSearchTag(newTag)">Add</button>
+    <!-- ng-init="factSearch.tags = []" -->
+    <ul ng-show="(factSearch.tags.length > 0)">
+      <li ng-repeat="tag in factSearch.tags track by $index">{{tag}}
+        <button class="btn btn-xs btn-default" ng-click="removeSearchTag($index)">remove</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary" ng-click="search(factSearch)">Search</button>
+    <button class="btn btn-primary" ng-click="reset()">Reset</button>
+    <button class="btn btn-primary" ng-click="study()">Study</button>
+  </div>
+</form>
+</div>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>Side 1</th>
+    <th>Side 2</th>
+    <th>Tags</th>
+    <th>User</th>
+    <th>id</th>
+    <th>myId</th>
+    <th></th>
+  </tr>
+  <tr ng-repeat="myFact in myFacts track by $index">
+    <td>{{myFact.side1}}</td>
+    <td>{{myFact.side2}}</td>
+    <td>{{myFact.tags.join()}}</td>
+    <td>{{myFact.user}}</td>
+    <td>{{myFact.id}}</td>
+    <td>{{myFact.myId}}</td>
+    <td>
+      <button class="btn btn-primary" ng-click="view(myFact.myId)">View Detail</button>
+      <button class="btn btn-danger" ng-click="delete(myFact.myId)">Delete</button>
+    </td>
+  </tr>
+</table>

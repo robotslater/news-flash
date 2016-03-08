@@ -1,0 +1,61 @@
+/**/
+
+.marginfix >:first-child {
+  margin-top: 0;
+}
+.marginfix >:last-child {
+  margin-bottom: 0;
+}
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.modal-window {
+  width: 60%;
+  position: absolute;
+  top: 100px;
+  left: 20%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 6px #555;
+  padding: 20px;
+}
+/**/
+.alert {
+    opacity: 1;
+}
+
+.fade {
+    -webkit-transition: opacity 2s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 2s;
+    opacity: 0;
+}
+/**/
+#utilityNav {
+  margin: 0;
+  background: #333;
+  color: #ccc;
+  min-height: 0;
+}
+#utilityNav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  float:right;
+}
+#utilityNav ul li {
+  margin: 6px;
+  float: left;
+}
+#utilityNav ul li:last-child {
+  margin-right:0;
+}
+#utilityNav ul li a {
+  padding: 0;
+  color: inherit;
+}

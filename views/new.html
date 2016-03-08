@@ -1,0 +1,34 @@
+<form id="factForm" name="factForm" novalidate>
+  <!-- <div class="form-group">
+    <label>Id:</label>
+    <input ng-model="fact.id" type="text"/>
+  </div> -->
+  <div class="form-group">
+    <label>Side1:</label>
+    <textarea class="form-control" ng-model="fact.side1"></textarea>
+  </div>
+
+<div class="form-group">
+  <label>Side2:</label>
+  <textarea class="form-control" ng-model="fact.side2"></textarea>
+</div>
+
+<div class="form-group">
+  <label>Tags:</label>
+  <input ng-model="newTag" name="newTag" type="text" ng-blur="showNewTagValidate = false" required />
+  <button ng-click="addTag(newTag)" class="btn btn-primary btn-xs">Add</button>
+  <div ng-show="showNewTagValidate && factForm.newTag.$error.required">
+    <span class="bg-danger" >text is required.</span>
+  </div>
+  <ul ng-show="fact.tags.length > 0">
+    <li ng-repeat="tag in fact.tags track by $index">{{tag}} <button ng-click="removeTag($index)" class="btn btn-xs btn-default">remove</button></li>
+  </ul>
+</div>
+
+<div class="form-group">
+  <button class="btn btn-primary" ng-click="update(fact)">Save</button>
+  <button class="btn btn-default" ng-click="returnToList()">Cancel</button>
+  <button class="btn btn-danger" ng-click="delete(fact)">Delete</button>
+</div>
+</form>
+<pre>fact = {{fact | json}}</pre>

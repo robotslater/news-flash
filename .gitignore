@@ -1,0 +1,68 @@
+######################
+# Project Specific
+######################
+
+app/**/*.js
+app/**/*.map
+typings/
+
+######################
+# Node
+######################
+/node/**
+/node_modules/**
+
+######################
+# SASS
+######################
+.sass-cache/**
+
+######################
+# Intellij
+######################
+.idea/**
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+
+######################
+# Package Files
+######################
+*.jar
+*.war
+*.ear
+*.db
+
+######################
+# Windows
+######################
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+######################
+# Mac OSX
+######################
+.DS_Store
+.svn
+
+######################
+# Logs
+######################
+*.log
+
+######################
+# Others
+######################
+*.class
+*.*~
+*~
+.merge_file*
+
+bower_components/
+
+firebaseConfig.js
